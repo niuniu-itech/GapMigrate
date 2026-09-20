@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gapmigration"
+version = "0.1.0"
+description = "Source-aware migration of constrained vector kernels"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pycparser>=2.22,<3", "pcpp>=1.30,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "build>=1"]
+
+[project.scripts]
+gapmigration = "gapmigration.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

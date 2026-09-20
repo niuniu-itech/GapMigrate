@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="182" viewBox="0 0 220 182" role="img"><title>GapMigrate transfer icon</title><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 37 H57 Q24 37 24 70 V112 Q24 145 57 145 H86 V105 H64" stroke="#7443A8" stroke-width="14"/>
+    <path d="M136 145 H163 Q196 145 196 112 V70 Q196 37 163 37 H136" stroke="#213343" stroke-width="14"/>
+    <path d="M77 79 H140" stroke="#ED7055" stroke-width="11"/>
+    <path d="M126 63 L145 79 L126 95" stroke="#ED7055" stroke-width="11"/>
+    <rect x="100" y="112" width="18" height="18" rx="4" fill="#ED7055" stroke="none"/>
+    </g></svg>

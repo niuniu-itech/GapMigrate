@@ -1,0 +1,30 @@
+[
+  {
+    "file": "migration_choices.pdf",
+    "source_figure": "fig01",
+    "source_version": "V1.152",
+    "kind": "method",
+    "sha256": "e2a1456017f3b276a080c59266795a9a954355748fcef48f27db9fdf33968bf2"
+  },
+  {
+    "file": "framework_overview.pdf",
+    "source_figure": "fig02",
+    "source_version": "V1.152",
+    "kind": "method",
+    "sha256": "8a44824958d078743fd3808fa205c393267b24f830729eb20f1b1c4b3c3746d2"
+  },
+  {
+    "file": "tvm_latency_comparison.pdf",
+    "source_figure": "fig05",
+    "source_version": "V1.152",
+    "kind": "result",
+    "sha256": "b8d0e263b86227b9fe29a1bc5988baa3c2d0bac66509ce6dad967fbb259b69e1"
+  },
+  {
+    "file": "qualified_gain_yield.pdf",
+    "source_figure": "fig09",
+    "source_version": "V1.152",
+    "kind": "result",
+    "sha256": "b87ca96f868797d3b1c63a3f77077d4d00d48b2ba6d8129ddc5583f87b7f5b9b"
+  }
+]
