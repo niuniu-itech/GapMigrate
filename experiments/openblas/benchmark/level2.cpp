@@ -39,10 +39,12 @@ int main(int argc,char**argv){
  source_kernel(m,m,alpha,a.data(),lda,x.data(),sx,y.data(),sy,work.data());
 #endif
  };
+ fprintf(stderr,"qualification_begin\n");fflush(stderr);
  call();double err=0;bool ok=a==aa&&x==xx;
  for(int i=0;i<ny;i++){double e=std::abs(y[i*sy]-ref[i]);err=std::max(err,e);if(!std::isfinite(y[i*sy])||e>2e-5+2e-4*std::abs(ref[i]))ok=false;}
  for(size_t i=0;i<y.size();i++)if((i%sy!=0||i/size_t(sy)>=size_t(ny))&&y[i]!=yy[i])ok=false;
  if(!ok){printf("{\"status\":\"numerical_failed\",\"max_abs_error\":%.9g}\n",err);return 2;}
+ fprintf(stderr,"timing_begin\n");fflush(stderr);
  std::vector<double>samples;for(int s=0;s<7;s++){y=yy;auto t=std::chrono::steady_clock::now();for(int r=0;r<20;r++)call();samples.push_back(std::chrono::duration<double,std::micro>(std::chrono::steady_clock::now()-t).count()/20);}
  bool post_ok=a==aa&&x==xx;double post_error=0;
  for(int i=0;i<ny;i++){double expected=yy[i*sy]+20*(ref[i]-yy[i*sy]);double e=std::abs(y[i*sy]-expected);post_error=std::max(post_error,e);if(!std::isfinite(y[i*sy])||e>20*2e-5+2e-4*std::abs(expected))post_ok=false;}

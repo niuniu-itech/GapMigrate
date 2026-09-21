@@ -12,7 +12,7 @@
 
 GapMigrate is a research prototype for source-aware vector kernel migration. Unsupported intrinsics seed a conservative control-flow and dependence analysis. Checked rules retain compatible source structure and construct target candidates. Compilation, instruction admission, numerical validation and timing remain separate stages.
 
-This repository packages the existing research components with a portable host-side CLI, examples and tests. It is **not a general translator for arbitrary C/C++**. Constructing a candidate does not establish its correctness or performance.
+This repository packages source analysis, checked mapping rules, candidate construction, native RVV search and independent validation, with command-line entry points and tests. The implemented rules target the registered FP32 source schemas. Constructing a candidate does not establish its correctness or performance.
 
 ## Method illustrations
 
@@ -78,6 +78,34 @@ bash experiments/openblas/run_all.sh --run-only --output outputs/rvv_build
 
 The default suite checks six preprocessed kernels and six representative migrated candidates, with 15 input configurations each. It does not rerun TVM/LLM searches or regenerate the paper plots. No OpenBLAS library is linked. See the [benchmark guide](experiments/openblas/README.md) for compiler flags, ABI requirements and result files.
 
+## Run migration from source
+
+Regenerate the candidate pool from the six preprocessed kernels on the analysis
+host, then search and validate on physical RVV Linux:
+
+```sh
+python3 -m pip install -e ".[dev]"
+python3 scripts/generate_candidates.py --output outputs/generated
+
+# Physical RVV Linux: independent fixed/full searches and held-out reports.
+python3 scripts/run_migration.py --candidate-dir outputs/generated \
+  --case gemm_01 --profile P1 --mode independent --output outputs/gemm_search
+
+# Host-only inspection, without hardware execution.
+python3 scripts/run_migration.py --candidate-dir outputs/generated \
+  --case gemm_01 --profile P1 --mode independent --plan-only \
+  --output outputs/gemm_plan
+```
+
+The generator reconstructs all 109 historical candidate token streams from source
+and records CFG/dependence analysis, rule checks and rejected alternatives. The
+runner compiles and audits objects, validates complete calls, freezes measured
+selections and runs independent reports. Budgets and seeds are in
+[`configs/search.json`](configs/search.json). The [migration guide](docs/reproduce_migration.md)
+explains shared-pool controls, independent searches, exports and cross-build
+validation. Host regression tests pass; the new portable native search runner has
+not yet been rerun on physical RVV hardware.
+
 ## Synchronize paper figures
 
 With a local manuscript build containing its TeX and `figures/` directory:
@@ -98,6 +126,10 @@ This copies the four figure PDFs referenced by the manuscript and renders matchi
 | `frontend.py`, `transforms.py` | Existing AST recovery and checked transformations | Bounded FP32/source schemas, not arbitrary C++ |
 | `admission.py` | Disassembly-level capability checks | External calls need separate resolution and auditing |
 | `clang_bridge.py` | Optional Clang JSON AST export | Separate inspection bridge, not the current CFG input |
+| `mapping/level3.py`, `mapping/common.py` | GEMM/TRMM regrouping and complete-call adapters | Source reduction order and triangular bounds retained |
+| `mapping/level2.py`, `mapping/materialize.py` | Intrinsic legalization, chunk reduction and boundary copies | Checked source patterns and buffer contracts |
+| `campaign.py`, `scoped_packing.py` | Candidate generation and optional packing-loop rewrite | Construction records and scope checks |
+| `search.py`, `runtime.py`, `migration.py` | Budgeted native compilation, admission, selection and frozen reports | RVV execution required; failures and timeouts retained |
 
 The repository, branding and manuscript use the name **GapMigrate**.
 
@@ -132,6 +164,7 @@ Install Clang separately. Add the correct RISC-V target and include flags for RV
 ## Documentation
 
 - [Architecture and limitations](docs/architecture.md)
+- [Source-to-candidate migration and independent reports](docs/reproduce_migration.md)
 - [RISC-V GCC and physical RVV execution](docs/rvv.md)
 - [Brand assets](assets/brand/README.md)
 - [Third-party notices and license status](THIRD_PARTY_NOTICES.md)

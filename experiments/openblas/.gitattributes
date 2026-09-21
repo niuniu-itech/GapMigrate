@@ -1,4 +1,5 @@
 # Keep source checksums identical on every platform.
 kernels/*.cpp -text
 candidates/*.cpp -text
+auxiliary/*.cpp -text
 run_all.sh text eol=lf

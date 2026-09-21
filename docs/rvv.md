@@ -31,6 +31,9 @@ These commands verify the packaged implementations. They do not reproduce the
 TVM/LLM searches or the historical paper plots. The following scale example is
 a smaller CLI smoke test, separate from the paper kernels.
 
+To generate candidates from source and perform budgeted migration rather than
+validate stored snapshots, use the [migration pipeline](reproduce_migration.md).
+
 ## Generate on the analysis host
 
 ```sh

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gapmigration"
-version = "0.1.0"
+version = "0.2.0"
 description = "Source-aware migration of constrained vector kernels"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -15,6 +15,8 @@ dev = ["pytest>=8", "build>=1"]
 
 [project.scripts]
 gapmigration = "gapmigration.cli:main"
+gapmigration-generate = "gapmigration.campaign:main"
+gapmigration-run = "gapmigration.migration:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

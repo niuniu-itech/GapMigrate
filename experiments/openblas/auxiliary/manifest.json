@@ -1,0 +1,12 @@
+{
+  "role": "optional packing helper; not a seventh paper variant",
+  "source": "kernel/riscv64/gemm_ncopy_rvv_v1.c",
+  "source_sha256": "55d14a4a5165ee454f693fec98f9a5a92e2eecd03621658f33ae8dd1074ef069",
+  "sha256": "15355d8930f8aa64aa5675a95b71a192151f7be9e501eafcc45731f4e5460455",
+  "defines": [
+    "FLOAT=float",
+    "BLASLONG=long",
+    "CNAME=source_kernel"
+  ],
+  "contract": "FP32, VLEN=256, fixed 16-column packed format, positive dimensions, nonaliasing buffers"
+}

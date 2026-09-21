@@ -32,6 +32,11 @@ The drivers are extracted from the report harnesses, with argument and target
 checks added and unrelated operator branches removed. This package enables fresh
 correctness checks; it does not recreate the full historical search campaign.
 
+To regenerate candidates and run native budgeted searches, see the
+[migration guide](../../docs/reproduce_migration.md). Its portable implementation
+is separate from the snapshot-validation commands below. An optional preprocessed
+packing helper is in `auxiliary/`; it is not an additional paper operator variant.
+
 ## One-command verification
 
 On the physical RVV Linux machine, from the repository root:

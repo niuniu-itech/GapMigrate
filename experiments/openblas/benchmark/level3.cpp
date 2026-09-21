@@ -34,8 +34,10 @@ int main(int argc,char**argv){
  double atol=2e-4,rtol=2e-4;
  double max_abs=0,max_scaled=0;size_t bad=0;
  auto check=[&](){bad=0;max_abs=max_scaled=0;for(size_t i=0;i<ref.size();i++){double e=fabs((double)C[i]-ref[i]),tol=atol+rtol*fabs(ref[i]);max_abs=std::max(max_abs,e);max_scaled=std::max(max_scaled,tol?e/tol:e);if(!std::isfinite(C[i])||e>tol)bad++;}for(size_t i=ref.size();i<C.size();i++)if(C[i]!=123456.f)bad++;if(hash(A)!=ha||hash(B)!=hb)bad++;};
+ fprintf(stderr,"qualification_begin\n");fflush(stderr);
  execute();check();if(bad){printf("{\"status\":\"numerical_failed\",\"bad\":%zu,\"max_abs\":%.12g,\"max_scaled\":%.12g,\"diagnostic\":%s}\n",bad,max_abs,max_scaled,diagnose?"true":"false");return 4;}
  if(diagnose){printf("{\"status\":\"pass\",\"diagnostic\":true,\"max_abs\":%.12g}\n",max_abs);return 0;}
+ fprintf(stderr,"timing_begin\n");fflush(stderr);
  execute();double t0=now();execute();double one=now()-t0;int batch=(int)std::min(2000.,std::max(1.,0.003/std::max(one,1e-8)));
  std::vector<double>times;for(int s=0;s<7;s++){t0=now();for(int b=0;b<batch;b++)execute();times.push_back((now()-t0)*1e6/batch);}
  check();auto raw=times;std::sort(times.begin(),times.end());

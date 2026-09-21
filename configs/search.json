@@ -1,0 +1,10 @@
+{
+  "search_budget_s": 120,
+  "compile_s": 30,
+  "audit_s": 10,
+  "run_s": 85,
+  "phase_limits": {"reference": 60, "qualification": 15, "timing": 10},
+  "selection_seed": 5100,
+  "report_seeds": [99101, 99102, 99103, 99104, 99105],
+  "order_seed": 9176
+}
