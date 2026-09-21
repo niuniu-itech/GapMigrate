@@ -2,29 +2,45 @@
   {
     "file": "migration_choices.pdf",
     "source_figure": "fig01",
-    "source_version": "V1.152",
+    "paper_figure_number": 1,
+    "source_label": "fig:example",
+    "source_version": "V1.178",
     "kind": "method",
-    "sha256": "e2a1456017f3b276a080c59266795a9a954355748fcef48f27db9fdf33968bf2"
+    "sha256": "c9d117f16cf669bc3c914d18112bb6aa75f0b1d1e235f4cfab6b371579dace9d",
+    "preview_sha256": "43f597d847d89986224e7fadf9cf2808d9a595fda0ae7ceb2ccb476b3169cc95",
+    "preview_method": "PyMuPDF rendering of the same one-page PDF at 144 dpi"
   },
   {
     "file": "framework_overview.pdf",
     "source_figure": "fig02",
-    "source_version": "V1.152",
+    "paper_figure_number": 2,
+    "source_label": "fig:overview",
+    "source_version": "V1.178",
     "kind": "method",
-    "sha256": "8a44824958d078743fd3808fa205c393267b24f830729eb20f1b1c4b3c3746d2"
+    "sha256": "8f3709de5dd6051bdc3a241baa4c6b6a3898a08eab89c1ede2bb3ea9e6567b43",
+    "preview_sha256": "08d56258cee9584adc0818da903710ce34684b02aee7d754833830e1b4c5126b",
+    "preview_method": "PyMuPDF rendering of the same one-page PDF at 144 dpi"
   },
   {
     "file": "tvm_latency_comparison.pdf",
     "source_figure": "fig05",
-    "source_version": "V1.152",
+    "paper_figure_number": 4,
+    "source_label": "fig:baseline",
+    "source_version": "V1.178",
     "kind": "result",
-    "sha256": "b8d0e263b86227b9fe29a1bc5988baa3c2d0bac66509ce6dad967fbb259b69e1"
+    "sha256": "b8d0e263b86227b9fe29a1bc5988baa3c2d0bac66509ce6dad967fbb259b69e1",
+    "preview_sha256": "33731806812912948d7e082c3405617310e1866420f9e1d91466c544e0562e58",
+    "preview_method": "PyMuPDF rendering of the same one-page PDF at 144 dpi"
   },
   {
     "file": "qualified_gain_yield.pdf",
     "source_figure": "fig09",
-    "source_version": "V1.152",
+    "paper_figure_number": 5,
+    "source_label": "fig:gain_yield",
+    "source_version": "V1.178",
     "kind": "result",
-    "sha256": "b87ca96f868797d3b1c63a3f77077d4d00d48b2ba6d8129ddc5583f87b7f5b9b"
+    "sha256": "a6bb84eacceb08b9578f1e0c12882202155418c50af35b31ee765cb2c45c29ad",
+    "preview_sha256": "d0db8bf29c95618e2d9eb1f1d1276541c5b7dd70f0eabca7f5b2ce63451c0722",
+    "preview_method": "PyMuPDF rendering of the same one-page PDF at 144 dpi"
   }
 ]

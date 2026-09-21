@@ -4,6 +4,33 @@ The public path uses RVV 1.0, `riscv_vector.h` and `__riscv_` intrinsics.
 Use a GCC build supporting these intrinsics and the target machine's ABI.
 The capability profiles restrict generated instructions in software.
 
+## Paper-kernel benchmark suite
+
+The [standalone OpenBLAS benchmark guide](../experiments/openblas/README.md)
+documents the six preprocessed FP32 kernels, migrated candidates and registered
+inputs. No OpenBLAS library is required. For the complete default verification:
+
+```sh
+# Physical RVV Linux, VLEN=256.
+bash experiments/openblas/run_all.sh
+# Or a short smoke check.
+bash experiments/openblas/run_all.sh --smoke --repeats 1
+```
+
+For separate compilation and execution hosts:
+
+```sh
+# x86-64 Linux with a RISC-V GCC/G++ cross toolchain.
+bash experiments/openblas/run_all.sh --build-only \
+  --cxx riscv64-linux-gnu-g++ --output outputs/rvv_build
+# Copy the repository and that output directory to the physical RVV machine.
+bash experiments/openblas/run_all.sh --run-only --output outputs/rvv_build
+```
+
+These commands verify the packaged implementations. They do not reproduce the
+TVM/LLM searches or the historical paper plots. The following scale example is
+a smaller CLI smoke test, separate from the paper kernels.
+
 ## Generate on the analysis host
 
 ```sh
