@@ -6,14 +6,16 @@ GEMV-N, GEMV-T, SYMV-L and SYMV-U (BLAS Level 2).
 
 ## Files and provenance
 
-- `upstream/`: six **unmodified, macro-bearing** OpenBLAS C files, their
-  BSD license and SHA-256 / immutable Git blob identifiers in `provenance.json`.
-  GEMM comes from the recorded v0.3.30 snapshot; the other files come from the
-  recorded development snapshot. Do not describe all six as one release.
-- `include/common.h`: a minimal **benchmark-only compatibility header** selecting
-  FP32 and `CNAME=source_kernel`. It is not the full OpenBLAS header.
-  TRMM additionally defines `TRMMKERNEL`; `DOUBLE`, `LEFT`, and `TRANSA` stay
-  undefined. Original macro branches remain in the source files.
+- `kernels/`: six preprocessed FP32 implementations (`gemm.cpp`, `trmm.cpp`,
+  `gemv_n.cpp`, `gemv_t.cpp`, `symv_L.cpp`, `symv_U.cpp`). OpenBLAS macro branches
+  and type/function macros have already been expanded. Only standard C/C++ and
+  RVV headers remain. No original macro-bearing source files are needed to build.
+- `kernels/manifest.json`: source-origin hashes, published file hashes and the
+  exact preprocessing definitions. FP32 uses `FLOAT=float`, `BLASLONG=long`, and
+  `CNAME=source_kernel`; TRMM selects `TRMMKERNEL=1`, with `LEFT` and `TRANSA`
+  undefined. These fixed variants do not cover all original macro combinations.
+- `LICENSES/OpenBLAS.txt`: third-party license. Copyright notices are also retained
+  in the preprocessed files and derived candidate snapshots.
 - `benchmark/`: FP64-reference checks, input-integrity and output-sentinel checks,
   and latency measurement. The Level 3 wrapper packs source-layout inputs and
   initializes outputs inside the timed call.
@@ -30,6 +32,44 @@ The drivers are extracted from the report harnesses, with argument and target
 checks added and unrelated operator branches removed. This package enables fresh
 correctness checks; it does not recreate the full historical search campaign.
 
+## One-command verification
+
+On the physical RVV Linux machine, from the repository root:
+
+```sh
+bash experiments/openblas/run_all.sh
+```
+
+This builds the six preprocessed kernels and six representative migrated
+candidates, then checks all 15 registered inputs for each implementation with
+three independent invocations per input (540 invocations total). It is not an
+exhaustive run of all 109 candidates or a replay of the paper's search.
+Every implementation gets a separate directory under `outputs/openblas_suite_*`.
+`summary.json` collects build/run status; per-implementation `results.jsonl`
+contains numerical checks, latency samples and failures. Any failed job makes
+the script exit nonzero. The selected candidate IDs are explicit in `run_all.py`.
+
+```sh
+# Quick check, one input and one process per implementation.
+bash experiments/openblas/run_all.sh --smoke --repeats 1
+# Only the six preprocessed source kernels.
+bash experiments/openblas/run_all.sh --suite source
+# Cross-compile on x86-64 Linux. Do not execute there.
+bash experiments/openblas/run_all.sh --build-only \
+  --cxx riscv64-linux-gnu-g++ --output outputs/rvv_build
+# After transferring the repository and outputs/rvv_build to physical RVV Linux.
+bash experiments/openblas/run_all.sh --run-only --output outputs/rvv_build
+```
+
+The equivalent portable entry point is `python3 experiments/openblas/run_all.py`.
+Use the same `--suite` setting when splitting build and run. Optional `--cpu N`
+pins measurement to a core. Existing result files are preserved, not overwritten.
+
+**No OpenBLAS library is linked.** All selected computation and required packing
+are compiled from these files. You need a compatible RISC-V GCC/G++, its
+`riscv_vector.h`, and Linux C/C++ runtime libraries (including libm). The host
+uses Python 3 standard-library modules only; pcpp is not required by users.
+
 ## Native build and execution
 
 Use Python 3 and RISC-V GCC/G++ with RVV 1.0 intrinsics (the paper used GCC 13.2).
@@ -42,7 +82,7 @@ From the repository root:
 python3 experiments/openblas/run.py verify
 python3 experiments/openblas/run.py list
 
-# Original macro-bearing GEMM plus source-layout packing adapter.
+# Preprocessed GEMM plus its source-layout packing adapter.
 python3 experiments/openblas/run.py build --variant gemm \
   --cxx g++ --output outputs/openblas/gemm_source
 python3 experiments/openblas/run.py run --build outputs/openblas/gemm_source
@@ -61,11 +101,40 @@ python3 experiments/openblas/run.py build --candidate gemv_t_P4_m1_chunk_reduce 
 python3 experiments/openblas/run.py run --build outputs/openblas/gemv_t_migrated
 ```
 
-Other original variants are `gemv_n`, `gemv_t`, `symv_L`, and `symv_U`.
+Other preprocessed variants are `gemv_n`, `gemv_t`, `symv_L`, and `symv_U`.
 Use `--smoke` for only the first registered input. The default is all 15 inputs
 with three independent executable invocations each. Use `--repeats 5` for five
 invocations, and optionally `--cpu N` to pin execution to an available core.
 Do not run timing jobs concurrently on that core.
+
+## Direct compiler commands
+
+The Python build command records the exact commands in `build_commands.json`.
+For a standalone manual GEMM build on the RVV machine, from the repository root:
+
+```sh
+mkdir -p outputs/manual
+c++ -O3 -std=c++11 -march=rv64gcv_zvl256b -mabi=lp64d \
+  -fno-fast-math -ffp-contract=off -fno-tree-vectorize -fno-tree-slp-vectorize \
+  -fno-tree-loop-distribute-patterns -fno-builtin -fno-stack-protector \
+  experiments/openblas/kernels/gemm.cpp \
+  experiments/openblas/benchmark/level3_wrapper.cpp \
+  experiments/openblas/benchmark/level3.cpp -o outputs/manual/gemm
+outputs/manual/gemm 0 16 256 16 99101 0
+```
+
+For TRMM, replace `kernels/gemm.cpp` with `kernels/trmm.cpp`, add
+`-DTRMM_BENCH`, and run `outputs/manual/trmm 0 16 256 256 99101 0` after
+changing the output name. `K=N` is required.
+
+For Level 2, compile the selected `kernels/*.cpp` together with
+`benchmark/level2.cpp`, using the same flags and `-DFAMILY=0` for GEMV-N,
+`1` for GEMV-T, `2` for SYMV-L, or `3` for SYMV-U. The executable arguments
+are `M N inc_x inc_y seed`, for example `7 11 2 3 99101`. SYMV uses `N=M`.
+
+For a complete migrated Level 3 candidate, replace `kernels/gemm.cpp` with
+its `candidates/*.cpp` and **omit** `level3_wrapper.cpp`, because the candidate
+already contains its wrapper. This also applies to `--source` builds.
 
 ## Cross-compilation on an x86-64 Linux host
 

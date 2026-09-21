@@ -28,7 +28,7 @@ def run_command(cmd, timeout):
         return dict(command=[str(x) for x in cmd], returncode=None, status='timeout')
 
 def verify():
-    records=read('upstream/provenance.json')+read('candidates/catalog.json')
+    records=read('kernels/manifest.json')+read('candidates/catalog.json')
     for r in records:
         assert hashlib.sha256((ROOT/r['path']).read_bytes()).hexdigest()==r['sha256'],r['path']
     cases=read('configs/inputs.json')
@@ -50,9 +50,9 @@ def build(args):
     elif args.source:
         source=Path(args.source).resolve();kind='external'
     else:
-        if not variant:raise ValueError('--variant is required for upstream kernels')
-        row=next(r for r in read('upstream/provenance.json') if r['variant']==variant)
-        source=ROOT/row['path'];kind='upstream'
+        if not variant:raise ValueError('--variant is required for preprocessed kernels')
+        row=next(r for r in read('kernels/manifest.json') if r['variant']==variant)
+        source=ROOT/row['path'];kind='preprocessed'
     if not variant:raise ValueError('--variant is required with --source')
     if kind!='external':
         assert hashlib.sha256(source.read_bytes()).hexdigest()==row['sha256'],source
@@ -63,10 +63,9 @@ def build(args):
         (out/'build_commands.json').write_text(json.dumps(commands,indent=2))
         if r['returncode']!=0:raise RuntimeError('Compilation failed. See '+str(out/'build_commands.json'))
     version=run_command([args.cxx,'--version'],10)
-    defines=['-DTRMMKERNEL=1'] if variant=='trmm' and kind=='upstream' else []
-    execute([args.cxx,*FLAGS,*defines,'-I',ROOT/'include','-x','c++','-c',source,'-o',out/'kernel.o'])
+    execute([args.cxx,*FLAGS,'-x','c++','-c',source,'-o',out/'kernel.o'])
     objects=[out/'kernel.o']
-    if level3 and kind=='upstream':
+    if level3 and kind=='preprocessed':
         execute([args.cxx,*FLAGS,*(['-DTRMM_BENCH'] if variant=='trmm' else []),
                  '-c',ROOT/'benchmark/level3_wrapper.cpp','-o',out/'wrapper.o'])
         objects.append(out/'wrapper.o')

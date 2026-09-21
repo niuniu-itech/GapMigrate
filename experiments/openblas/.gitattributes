@@ -1,3 +1,4 @@
-# Preserve exact source bytes for the published provenance checksums.
-upstream/* -text
+# Keep source checksums identical on every platform.
+kernels/*.cpp -text
 candidates/*.cpp -text
+run_all.sh text eol=lf

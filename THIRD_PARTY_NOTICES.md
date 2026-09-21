@@ -1,6 +1,6 @@
 # Third-party components
 
-This repository does not bundle compiler or TVM source/binaries. Those dependencies must be installed separately. Selected OpenBLAS kernel sources and source-derived candidate snapshots are bundled in `experiments/openblas`, with copyright headers and `upstream/LICENSE` retained. Their licenses remain independent of this project's currently undecided license.
+This repository does not bundle compiler or TVM source/binaries. Those dependencies must be installed separately. Selected preprocessed OpenBLAS kernels and source-derived candidate snapshots are bundled in `experiments/openblas`, with copyright headers and `LICENSES/OpenBLAS.txt` retained. Their licenses remain independent of this project's currently undecided license.
 
 | Component | Use | Upstream license / source |
 | --- | --- | --- |

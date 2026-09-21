@@ -59,12 +59,10 @@ The synthetic example is an FP32 RVV scale loop using m2 intrinsics. P1 restrict
 
 ## Reproduce kernel correctness checks
 
-The [standalone OpenBLAS benchmark package](experiments/openblas/README.md) includes six original macro-bearing RVV kernels, 109 historical migrated candidate snapshots, all 90 registered input configurations, and FP64-reference correctness/timing drivers. It supports native RISC-V GCC builds or cross-compilation followed by execution on physical RVV hardware.
+The [standalone OpenBLAS benchmark package](experiments/openblas/README.md) includes six preprocessed FP32 RVV kernels, 109 historical migrated candidate snapshots, all 90 registered input configurations, and FP64-reference correctness/timing drivers. It supports native RISC-V GCC builds or cross-compilation followed by execution on physical RVV hardware.
 
 ```sh
-python3 experiments/openblas/run.py verify
-python3 experiments/openblas/run.py build --candidate P1_gemm_L1_group4 --output outputs/gemm_check
-python3 experiments/openblas/run.py run --build outputs/gemm_check
+bash experiments/openblas/run_all.sh
 ```
 
 ## Components
