@@ -1,0 +1,3 @@
+# Preserve exact source bytes for the published provenance checksums.
+upstream/* -text
+candidates/*.cpp -text
