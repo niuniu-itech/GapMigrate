@@ -1,6 +1,6 @@
 # Third-party components
 
-This repository does not bundle compiler, TVM or OpenBLAS source/binaries. Dependencies must be installed separately. Their licenses remain independent of this project's currently undecided license.
+This repository does not bundle compiler or TVM source/binaries. Those dependencies must be installed separately. Selected OpenBLAS kernel sources and source-derived candidate snapshots are bundled in `experiments/openblas`, with copyright headers and `upstream/LICENSE` retained. Their licenses remain independent of this project's currently undecided license.
 
 | Component | Use | Upstream license / source |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ This repository does not bundle compiler, TVM or OpenBLAS source/binaries. Depen
 | Apache TVM | Research dependency; no tuning implementation bundled in this package | Apache-2.0; https://github.com/apache/tvm/blob/main/LICENSE |
 | pycparser | Existing structured-C AST/CFG prototype | BSD-3-Clause; https://github.com/eliben/pycparser/blob/main/LICENSE |
 | pcpp | Frontend preprocessing | BSD-3-Clause; https://github.com/ned14/pcpp/blob/master/LICENSE |
-| OpenBLAS | User-supplied isolated benchmark kernels | BSD-3-Clause; https://github.com/OpenMathLib/OpenBLAS/blob/develop/LICENSE |
+| OpenBLAS | Bundled isolated kernels and derived candidate snapshots | BSD-3-Clause; https://github.com/OpenMathLib/OpenBLAS/blob/develop/LICENSE |
 
 Check the exact installed versions and their additional third-party notices before redistributing dependencies. If upstream source is copied or modified, retain the applicable copyright, LICENSE and NOTICE material and identify changes. Merely invoking these tools does not select a license for original GapMigrate code.
 

@@ -1,0 +1,128 @@
+[
+  {
+    "variant": "gemm",
+    "path": "upstream/gemmkernel_rvv_v1x8.c",
+    "sha256": "ed04d6f5382dc9b6c05dd7fffbcd3c34cc987dbb4e2a961e77e4f78fa2033d89",
+    "git_blob_sha1": "471b3158fea122b1ea6fd86ff3821bca2952a965",
+    "upstream_path": "kernel/riscv64/gemmkernel_rvv_v1x8.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/471b3158fea122b1ea6fd86ff3821bca2952a965",
+    "upstream_ref": "v0.3.30",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA",
+      "TRMMKERNEL"
+    ]
+  },
+  {
+    "variant": "trmm",
+    "path": "upstream/trmmkernel_rvv_v1x8.c",
+    "sha256": "c28fb87934f83048a4c6cfbf6c86f06c7e58979ab6f297609d2a395f1a183b76",
+    "git_blob_sha1": "393b24bce0af8958deadb5e086f0a6eab78064f4",
+    "upstream_path": "kernel/riscv64/trmmkernel_rvv_v1x8.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/393b24bce0af8958deadb5e086f0a6eab78064f4",
+    "upstream_ref": "develop snapshot identified by immutable blob hash",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel",
+      "TRMMKERNEL=1"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA"
+    ]
+  },
+  {
+    "variant": "gemv_n",
+    "path": "upstream/gemv_n_rvv.c",
+    "sha256": "581da4847a3ee7491666b692b8aaa1ec8beafb2edbac63dd670ed9cf1547634e",
+    "git_blob_sha1": "1366eb5adf7f0a11ebea1e7a6e131085f83a4e17",
+    "upstream_path": "kernel/riscv64/gemv_n_rvv.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/1366eb5adf7f0a11ebea1e7a6e131085f83a4e17",
+    "upstream_ref": "develop snapshot identified by immutable blob hash",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA",
+      "TRMMKERNEL"
+    ]
+  },
+  {
+    "variant": "gemv_t",
+    "path": "upstream/gemv_t_rvv.c",
+    "sha256": "b4a7b079af9025aabb475cfd5fbe74414e1c602af8cc50113ee7be3a0a9c4815",
+    "git_blob_sha1": "9c859aa50946b5a89871a26889390fa38c875176",
+    "upstream_path": "kernel/riscv64/gemv_t_rvv.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/9c859aa50946b5a89871a26889390fa38c875176",
+    "upstream_ref": "develop snapshot identified by immutable blob hash",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA",
+      "TRMMKERNEL"
+    ]
+  },
+  {
+    "variant": "symv_L",
+    "path": "upstream/symv_L_rvv.c",
+    "sha256": "1cd39236fc8a9837afb034031187b2bea546a5143c598b35c8e5697479afd759",
+    "git_blob_sha1": "888d628a504cd7dd9bb2bdd9d874f0377bace5aa",
+    "upstream_path": "kernel/riscv64/symv_L_rvv.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/888d628a504cd7dd9bb2bdd9d874f0377bace5aa",
+    "upstream_ref": "develop snapshot identified by immutable blob hash",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA",
+      "TRMMKERNEL"
+    ]
+  },
+  {
+    "variant": "symv_U",
+    "path": "upstream/symv_U_rvv.c",
+    "sha256": "5d1199ef9c9a4f3a5891b3a0f3ec8ac8b60939fd3fe281d142a46cf9ae36f57b",
+    "git_blob_sha1": "bcd2f69817e1cf588dd8f57da432edef17b6d25d",
+    "upstream_path": "kernel/riscv64/symv_U_rvv.c",
+    "upstream_blob_url": "https://api.github.com/repos/OpenMathLib/OpenBLAS/git/blobs/bcd2f69817e1cf588dd8f57da432edef17b6d25d",
+    "upstream_ref": "develop snapshot identified by immutable blob hash",
+    "defines": [
+      "FLOAT=float",
+      "IFLOAT=float",
+      "BLASLONG=long",
+      "CNAME=source_kernel"
+    ],
+    "undefined": [
+      "DOUBLE",
+      "LEFT",
+      "TRANSA",
+      "TRMMKERNEL"
+    ]
+  }
+]

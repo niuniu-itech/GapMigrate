@@ -1,0 +1,32 @@
+[
+  {
+    "id": "P0",
+    "lmul": null,
+    "reductions": true,
+    "complex_memory": true
+  },
+  {
+    "id": "P1",
+    "lmul": 1,
+    "reductions": true,
+    "complex_memory": true
+  },
+  {
+    "id": "P2",
+    "lmul": null,
+    "reductions": false,
+    "complex_memory": true
+  },
+  {
+    "id": "P3",
+    "lmul": null,
+    "reductions": true,
+    "complex_memory": false
+  },
+  {
+    "id": "P4",
+    "lmul": 1,
+    "reductions": false,
+    "complex_memory": false
+  }
+]

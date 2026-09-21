@@ -57,6 +57,16 @@ python -m pytest
 
 The synthetic example is an FP32 RVV scale loop using m2 intrinsics. P1 restricts LMUL to m1. The command emits an m1 candidate, a scope report and explicit rejection records for regrouping choices that do not match this source. No RISC-V hardware is needed to inspect the analysis. Compiling and validating the emitted C requires a suitable RVV compiler and execution target.
 
+## Reproduce kernel correctness checks
+
+The [standalone OpenBLAS benchmark package](experiments/openblas/README.md) includes six original macro-bearing RVV kernels, 109 historical migrated candidate snapshots, all 90 registered input configurations, and FP64-reference correctness/timing drivers. It supports native RISC-V GCC builds or cross-compilation followed by execution on physical RVV hardware.
+
+```sh
+python3 experiments/openblas/run.py verify
+python3 experiments/openblas/run.py build --candidate P1_gemm_L1_group4 --output outputs/gemm_check
+python3 experiments/openblas/run.py run --build outputs/gemm_check
+```
+
 ## Components
 
 | Component | Purpose | Current boundary |

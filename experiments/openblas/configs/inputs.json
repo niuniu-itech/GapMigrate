@@ -1,0 +1,902 @@
+[
+  {
+    "id": "gemm_01",
+    "family": "gemm",
+    "M": 16,
+    "N": 256,
+    "K": 16,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_02",
+    "family": "gemm",
+    "M": 32,
+    "N": 256,
+    "K": 32,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_03",
+    "family": "gemm",
+    "M": 16,
+    "N": 1024,
+    "K": 32,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_04",
+    "family": "gemm",
+    "M": 64,
+    "N": 1024,
+    "K": 32,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_05",
+    "family": "gemm",
+    "M": 32,
+    "N": 256,
+    "K": 128,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_06",
+    "family": "gemm",
+    "M": 64,
+    "N": 256,
+    "K": 128,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_07",
+    "family": "gemm",
+    "M": 16,
+    "N": 128,
+    "K": 32,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_08",
+    "family": "gemm",
+    "M": 32,
+    "N": 256,
+    "K": 64,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_09",
+    "family": "gemm",
+    "M": 64,
+    "N": 512,
+    "K": 32,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_10",
+    "family": "gemm",
+    "M": 48,
+    "N": 96,
+    "K": 48,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_11",
+    "family": "gemm",
+    "M": 96,
+    "N": 192,
+    "K": 64,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_12",
+    "family": "gemm",
+    "M": 32,
+    "N": 1024,
+    "K": 128,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_13",
+    "family": "gemm",
+    "M": 128,
+    "N": 128,
+    "K": 64,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_14",
+    "family": "gemm",
+    "M": 64,
+    "N": 2048,
+    "K": 16,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "gemm_15",
+    "family": "gemm",
+    "M": 128,
+    "N": 256,
+    "K": 128,
+    "variant": "gemm",
+    "source": "gemmkernel_rvv_v1x8.c"
+  },
+  {
+    "id": "trmm_01",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 7,
+    "N": 15,
+    "K": 15,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_02",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 15,
+    "N": 31,
+    "K": 31,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_03",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 31,
+    "N": 63,
+    "K": 63,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_04",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 63,
+    "N": 95,
+    "K": 95,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_05",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 95,
+    "N": 127,
+    "K": 127,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_06",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 127,
+    "N": 191,
+    "K": 191,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_07",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 16,
+    "N": 256,
+    "K": 256,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_08",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 32,
+    "N": 256,
+    "K": 256,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_09",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 64,
+    "N": 256,
+    "K": 256,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_10",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 128,
+    "N": 256,
+    "K": 256,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_11",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 32,
+    "N": 512,
+    "K": 512,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_12",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 64,
+    "N": 512,
+    "K": 512,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_13",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 16,
+    "N": 1024,
+    "K": 1024,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_14",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 64,
+    "N": 1024,
+    "K": 1024,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "trmm_15",
+    "family": "trmm",
+    "variant": "trmm",
+    "M": 64,
+    "N": 2048,
+    "K": 2048,
+    "source": "trmmkernel_rvv_v1x8.c",
+    "contract": "right upper nonunit triangular multiplier",
+    "source_variant": "trmm_RU"
+  },
+  {
+    "id": "gemv_n_01",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 7,
+    "N": 11,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_02",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 15,
+    "N": 17,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_03",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 31,
+    "N": 33,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_04",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 47,
+    "N": 65,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_05",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 64,
+    "N": 96,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_06",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 95,
+    "N": 127,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_07",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 127,
+    "N": 129,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_08",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 128,
+    "N": 256,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_09",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 191,
+    "N": 255,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_10",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 256,
+    "N": 320,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_11",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 383,
+    "N": 511,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_12",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 512,
+    "N": 640,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_13",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 768,
+    "N": 1024,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_14",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 1023,
+    "N": 1025,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_n_15",
+    "family": "gemv",
+    "variant": "gemv_n",
+    "M": 1024,
+    "N": 1536,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_n_rvv.c"
+  },
+  {
+    "id": "gemv_t_01",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 7,
+    "N": 11,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_02",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 15,
+    "N": 17,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_03",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 31,
+    "N": 33,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_04",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 47,
+    "N": 65,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_05",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 64,
+    "N": 96,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_06",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 95,
+    "N": 127,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_07",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 127,
+    "N": 129,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_08",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 128,
+    "N": 256,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_09",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 191,
+    "N": 255,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_10",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 256,
+    "N": 320,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_11",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 383,
+    "N": 511,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_12",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 512,
+    "N": 640,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_13",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 768,
+    "N": 1024,
+    "sx": 1,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_14",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 1023,
+    "N": 1025,
+    "sx": 2,
+    "sy": 1,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "gemv_t_15",
+    "family": "gemv",
+    "variant": "gemv_t",
+    "M": 1024,
+    "N": 1536,
+    "sx": 2,
+    "sy": 3,
+    "source": "gemv_t_rvv.c"
+  },
+  {
+    "id": "symv_L_01",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 7,
+    "N": 7,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_02",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 15,
+    "N": 15,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_03",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 31,
+    "N": 31,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_04",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 47,
+    "N": 47,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_05",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 64,
+    "N": 64,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_06",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 95,
+    "N": 95,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_07",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 127,
+    "N": 127,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_08",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 128,
+    "N": 128,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_09",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 191,
+    "N": 191,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_10",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 256,
+    "N": 256,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_11",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 383,
+    "N": 383,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_12",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 512,
+    "N": 512,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_13",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 768,
+    "N": 768,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_14",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 1023,
+    "N": 1023,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_L_15",
+    "family": "symv",
+    "variant": "symv_L",
+    "M": 1024,
+    "N": 1024,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_L_rvv.c"
+  },
+  {
+    "id": "symv_U_01",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 7,
+    "N": 7,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_02",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 15,
+    "N": 15,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_03",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 31,
+    "N": 31,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_04",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 47,
+    "N": 47,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_05",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 64,
+    "N": 64,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_06",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 95,
+    "N": 95,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_07",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 127,
+    "N": 127,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_08",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 128,
+    "N": 128,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_09",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 191,
+    "N": 191,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_10",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 256,
+    "N": 256,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_11",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 383,
+    "N": 383,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_12",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 512,
+    "N": 512,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_13",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 768,
+    "N": 768,
+    "sx": 1,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_14",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 1023,
+    "N": 1023,
+    "sx": 2,
+    "sy": 1,
+    "source": "symv_U_rvv.c"
+  },
+  {
+    "id": "symv_U_15",
+    "family": "symv",
+    "variant": "symv_U",
+    "M": 1024,
+    "N": 1024,
+    "sx": 2,
+    "sy": 3,
+    "source": "symv_U_rvv.c"
+  }
+]
